@@ -3,20 +3,13 @@
 # Clear the screen
 clear
 
-# LEAVE CREDITS
-echo "
-#######################################################################################
-#
-#                                  Foxytoux
-#
-#                           Copyright (C) 2023 - 2024
-#
-#
-#######################################################################################"
+source ./.env
 
+# LEAVE CREDITS
 # Ask the user for the Minecraft server script URL
-read -p "Please enter the URL of the Minecraft server script (press Enter to use the default URL): " server_url
-server_url=${server_url:-"https://piston-data.mojang.com/v1/objects/5b868151bd02b41319f54c8d4061b8cae84e665c/server.jar"}
+#https://mcversions.net/download/1.21.1
+read -p "Please enter the URL of the Minecraft server script (press Enter to use the default URL(1.21.1)): " server_url
+server_url=${server_url:-"https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar"}
 
 # Download the Minecraft server script
 wget -O server.jar $server_url
@@ -26,7 +19,15 @@ sudo apt-get update
 sudo apt-get install openjdk-17-jdk -y
 
 # Ask the user if they accept the Minecraft EULA
-read -p "Do you accept the Minecraft EULA? (Type 'yes' or 'y' to accept): " eula_acceptance
+#read -p "Do you accept the Minecraft EULA? (Type 'yes' or 'y' to accept): " eula_acceptance
+
+#ngrok setup & install
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+tar -xf ngrok-v3-stable-linux-amd64.tgz
+./ngrok config add-authtoken $NGROK_TOKEN
+
+
+eula_acceptance = "yes"
 
 # Check if the user accepted the EULA
 if [[ "$eula_acceptance" =~ ^[Yy][Ee][Ss]?$ ]]; then
