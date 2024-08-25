@@ -1,5 +1,5 @@
 #!/bin/bash
-
+## ngrok tcp 25565
 # Clear the screen
 clear
 
@@ -14,9 +14,9 @@ server_url=${server_url:-"https://piston-data.mojang.com/v1/objects/59353fb40c36
 # Download the Minecraft server script
 wget -O server.jar $server_url
 
-# Download openjdk-17-jdk
+# Download openjdk-21-jdk
 sudo apt-get update
-sudo apt-get install openjdk-17-jdk -y
+sudo apt-get install openjdk-21-jdk -y
 
 # Ask the user if they accept the Minecraft EULA
 #read -p "Do you accept the Minecraft EULA? (Type 'yes' or 'y' to accept): " eula_acceptance
@@ -27,10 +27,7 @@ tar -xf ngrok-v3-stable-linux-amd64.tgz
 ./ngrok config add-authtoken $NGROK_TOKEN
 
 
-eula_acceptance = "yes"
-
-# Check if the user accepted the EULA
-if [[ "$eula_acceptance" =~ ^[Yy][Ee][Ss]?$ ]]; then
+if true; then
     # Ask the user for the amount of RAM to allocate
     read -p "How much RAM would you like to allocate to the Minecraft server (in GB)? " ram_amount
 
