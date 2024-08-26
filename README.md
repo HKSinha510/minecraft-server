@@ -16,3 +16,8 @@ bash minecraft.sh
 ```
 
 
+# Todo
+1. minecraft.sh for first install
+2. py counts its first or not
+
+

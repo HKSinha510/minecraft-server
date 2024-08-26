@@ -1,1 +1,6 @@
 .env
+ngrok
+*.tgz
+test.sh 
+./versions
+./libraries
