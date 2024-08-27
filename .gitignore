@@ -4,3 +4,6 @@ ngrok
 test.sh 
 ./versions
 ./libraries
+world/
+test.py
+__pycache__/
