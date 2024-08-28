@@ -56,13 +56,13 @@ def start_server():
         else:
             break
 
-def start_ngrok(port):
+def start_ngrok():
     import requests
     
     # Start ngrok in a new subprocess
     subprocess.run(["./ngrok", "config", "add-authtoken", read_env("NGROK_TOKEN")])
 
-    subprocess.Popen(["./ngrok", "tcp", str(port)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.Popen(["./ngrok", "tcp", str(minecraft_port)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     time.sleep(2)  # Allow ngrok to initialize
 
     # Get the ngrok URL from the API
@@ -176,6 +176,6 @@ while True:
 
         main_thread.start()
         ngrok_thread.start()
-        start_backup.start()
+        backup_thread.start()
         input_thread.start()
         print("Its Over")
