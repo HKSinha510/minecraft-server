@@ -83,6 +83,8 @@ def download() -> None:
         
         try: 
             m.download(m.find("world.zip"))
+            os.remove("./world/")
+            print("wohohoho")
 
             os.system("unzip world.zip -d ./world")
 
@@ -165,6 +167,13 @@ while True:
         # Write the modified content back to the file
         with open(server_properties, 'w') as file:
             file.writelines(lines)
+
+        server = threading.Timer(1, start_server)
+        server.start()
+        time.sleep(20)
+        server.cancel()
+
+        print("stoped")
 
         download()
 
