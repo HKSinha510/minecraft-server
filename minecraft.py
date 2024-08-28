@@ -178,5 +178,6 @@ while True:
         ngrok_thread.start()
         backup_thread.start()
         input_thread.start()
+        print("Its Over")
         break
         print("Its Over")
