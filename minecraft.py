@@ -178,7 +178,9 @@ while True:
         main_thread = threading.Thread(target=start_server)
         ngrok_thread = threading.Timer(2, start_ngrok)
         backup_thread = threading.Timer(10, start_backup)
+        input_thread = threading.Timer(12, manual_input)
 
         main_thread.start()
         ngrok_thread.start()
         start_backup.start()
+        input_thread.start()
