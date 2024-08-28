@@ -83,7 +83,7 @@ def download() -> None:
         
         try: 
             m.download(m.find("world.zip"))
-            os.remove("./world/")
+            subprocess.run(["rm", "-rf", "world/"])
             print("wohohoho")
 
             os.system("unzip world.zip -d ./world")
