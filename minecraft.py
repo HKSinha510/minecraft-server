@@ -80,24 +80,21 @@ def download() -> None:
         mega = Mega()
         email, password = read_env("MEGA_EMAIL"), read_env("MEGA_PASSWORD")
         m = mega.login(email, password)
-        print("Login Successfull")
+        
+        try: 
+            m.download(m.find("world.zip"))
+
+            os.system("unzip world.zip -d ./world")
+
+            print("Backup successfully unzipped")
+            os.remove("world.zip")
+
+        except Exception as e:
+            print(f"NO BACKUP FOUND")
+            print(e)
 
     except:
         print("Login failed")
-        exit()
-
-    try: 
-        m.download(m.find("world.zip"))
-
-        os.system("unzip world.zip -d ./world")
-
-        print("Backup successfully unzipped")
-        os.remove("world.zip")
-
-    except Exception as e:
-        print(f"NO BACKUP FOUND")
-        print(e)
-    
 
 def start_backup() -> None:
     from mega import Mega
@@ -170,9 +167,6 @@ while True:
             file.writelines(lines)
 
         download()
-        print("Exiting")
-
-        break
 
     else:
         main_thread = threading.Thread(target=start_server)
@@ -184,3 +178,4 @@ while True:
         ngrok_thread.start()
         start_backup.start()
         input_thread.start()
+        print("Its Over")
