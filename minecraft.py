@@ -168,16 +168,7 @@ while True:
         with open(server_properties, 'w') as file:
             file.writelines(lines)
 
-        server = threading.Timer(1, start_server)
-        server.start()
-        time.sleep(20)
-        server.cancel()
-
-        print("SERVER STOPPED")
-        print("Downloading backup...")
-
         download()
-
         time.sleep(1)
 
     else:
