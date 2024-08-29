@@ -18,11 +18,11 @@ wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
 tar -xf ngrok-v3-stable-linux-amd64.tgz
 
 #installing required modules
-pip install pip-review
-pip-review --local --auto
 pip install mega.py
 pip install requests
 #pip install --upgrade tenacity
+
+clear
 
 #./ngrok config add-authtoken $NGROK_TOKEN
 

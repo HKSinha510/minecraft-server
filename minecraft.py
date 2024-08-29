@@ -86,7 +86,7 @@ def download() -> None:
             subprocess.run(["rm", "-rf", "world/"])
             print("wohohoho")
 
-            os.system("unzip world.zip -d ./world")
+            os.system("unzip world.zip")
 
             print("Backup successfully unzipped")
             os.remove("world.zip")
@@ -173,11 +173,15 @@ while True:
         time.sleep(20)
         server.cancel()
 
-        print("stoped")
+        print("SERVER STOPPED")
+        print("Downloading backup...")
 
         download()
 
+        time.sleep(1)
+
     else:
+        subprocess.run(["bash", "reset.sh"])
         main_thread = threading.Thread(target=start_server)
         ngrok_thread = threading.Timer(2, start_ngrok)
         backup_thread = threading.Timer(10, start_backup)
@@ -187,6 +191,6 @@ while True:
         ngrok_thread.start()
         backup_thread.start()
         input_thread.start()
-        print("Its Over")
+
+
         break
-        print("Its Over")
