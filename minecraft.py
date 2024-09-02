@@ -124,7 +124,7 @@ def start_backup() -> None:
 
         m.upload(zip_name)                                          #upload the new zip file to Mega
 
-        send_command("save-off")
+        send_command("save-on")
 
         #delete old world
         old_file = m.find("world.zip")
